@@ -5,13 +5,6 @@ double r(double theta){
 	return theta;
 }
 
-// Calculate if number is in range
-bool inRange(double number, double target){
-	double low = target - TOLERANCE;
-	double high = target + TOLERANCE;
-	return number >= low && number <= high;
-}
-
 // Returns true if position is on spiral
 bool onSpiral(double x, double y){
 	// Calculate true angle/radius
@@ -22,7 +15,7 @@ bool onSpiral(double x, double y){
 	if(theta < 0) theta += 2 * PI;
 	double calc_r = r(theta);
 
-	return inRange(radius, calc_r);
+	return inRange(radius, calc_r-TOLERANCE, calc_r+TOLERANCE);
 }
 
 // Updates grid with new values
@@ -38,13 +31,14 @@ void updateGrid(){
 	fflush(stdout);
 }
 
-// Prints out grid
+// Prints grid
 void printGrid(){
 	for (int y = 0; y < HEIGHT; y++){
 		for (int x = 0; x < WIDTH; x++)
 			printf("%c", grid[y][x]);
 		printf("\n");
 	}
+	fflush(stdout);
 }
 
 int main(){

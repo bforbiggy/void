@@ -2,7 +2,12 @@
 
 // Spiral functions
 double r(double theta){
-	return theta/(PI/4);
+	return theta/(0.25*PI);
+}
+
+// Inverse spiral function
+double theta(double r){
+	return 4 * PI * r;
 }
 
 // Calculate if number is in range
@@ -26,7 +31,7 @@ void updateGrid(){
 
 			// If point is close enough, mark it
 			double actualRadius = sqrt(x*x + y*y);
-			grid[h][w] = inRange(actualRadius, radius) ? '*' : ' ';
+			grid[h][w] = inRange(actualRadius, radius) ? 'X' : ' ';
 		}
 	}
 	fflush(stdout);

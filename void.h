@@ -7,7 +7,7 @@
 #include <unistd.h>
 
 #define PI (3.14159265359)
-#define TOLERANCE (0.2)
+#define TOLERANCE (0.3)
 #define SLEEP_DURATION (10)
 
 #define wTOx(w, wmax) (+w - wmax/2)

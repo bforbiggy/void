@@ -1,9 +1,12 @@
 #ifndef VOID_HEADER
 #define VOID_HEADER
 
+#include <math.h>
 #include <stdio.h>
+#include <stdbool.h>
 #include <unistd.h>
 
+#define PI (3.14159265359L)
 #define WIDTH (101)
 #define HEIGHT (101)
 #define SLEEP_DURATION (1)

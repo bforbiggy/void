@@ -1,20 +1,20 @@
 #include "void.h"
 
 double r(double theta){
-	return theta/45;
+	return theta/(PI/4);
 }
 
 void updateGrid(){
-	for (int y = 0; y < HEIGHT; y++){
-		for (int x = 0; x < WIDTH; x++){
-			grid[y][x] = ((y*x) % 26) + 97;
+	for (int h = 0; h < HEIGHT; h++){
+		for (int w = 0; w < WIDTH; w++){
+			// grid[h][w] = ((h*w) % 26) + 97;
 		}
 	}
 	fflush(stdout);
 }
 
 int main(){
-	while(1){
+	while(true){
 		updateGrid();
 		printGrid();
 		sleep(SLEEP_DURATION);

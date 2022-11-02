@@ -2,12 +2,7 @@
 
 // Spiral functions
 double r(double theta){
-	return theta/(0.25*PI);
-}
-
-// Inverse spiral function
-double theta(double r){
-	return 4 * PI * r;
+	return theta;
 }
 
 // Calculate if number is in range
@@ -21,17 +16,18 @@ bool inRange(double number, double target){
 void updateGrid(){
 	for (int h = 0; h < HEIGHT; h++){
 		for (int w = 0; w < WIDTH; w++){
+			// Calculate true angle/radius
 			double x = wTOx(w, WIDTH);
 			double y = hTOx(h, HEIGHT);
-
-			// Calculate expected point
 			double theta = atan2(y, x);
+			double radius = fmod(sqrt(x*x + y*y), r(2*PI));
+
+			// Calculate expected radius
 			if(theta < 0) theta += 2 * PI;
-			double radius = r(theta);
+			double calc_r = r(theta);
 
 			// If point is close enough, mark it
-			double actualRadius = sqrt(x*x + y*y);
-			grid[h][w] = inRange(actualRadius, radius) ? 'X' : ' ';
+			grid[h][w] = inRange(radius, calc_r) ? 'X' : ' ';
 		}
 	}
 	fflush(stdout);

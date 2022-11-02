@@ -12,22 +12,27 @@ bool inRange(double number, double target){
 	return number >= low && number <= high;
 }
 
+// Returns true if position is on spiral
+bool onSpiral(double x, double y){
+	// Calculate true angle/radius
+	double theta = atan2(y, x);
+	double radius = fmod(sqrt(x*x + y*y), r(2*PI));
+
+	// Calculate expected radius
+	if(theta < 0) theta += 2 * PI;
+	double calc_r = r(theta);
+
+	return inRange(radius, calc_r);
+}
+
 // Updates grid with new values
 void updateGrid(){
 	for (int h = 0; h < HEIGHT; h++){
 		for (int w = 0; w < WIDTH; w++){
-			// Calculate true angle/radius
+			// If point is on spiral, mark it
 			double x = wTOx(w, WIDTH);
 			double y = hTOx(h, HEIGHT);
-			double theta = atan2(y, x);
-			double radius = fmod(sqrt(x*x + y*y), r(2*PI));
-
-			// Calculate expected radius
-			if(theta < 0) theta += 2 * PI;
-			double calc_r = r(theta);
-
-			// If point is close enough, mark it
-			grid[h][w] = inRange(radius, calc_r) ? 'X' : ' ';
+			grid[h][w] = onSpiral(x, y) ? 'X' : ' ';
 		}
 	}
 	fflush(stdout);

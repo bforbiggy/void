@@ -1,5 +1,5 @@
 default:
-	gcc void.c -o void -Wall -Wextra
+	gcc void.c -o void -Wall -Wextra -lm
 
 run: default
 	./void

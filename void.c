@@ -4,10 +4,19 @@ double r(double theta){
 	return theta/(PI/4);
 }
 
+// Converts w,h indexes to theta 
+double whTheta(int w, int h){
+	double x = w - WIDTH/2;
+	double y = -h + HEIGHT/2;
+	return atan2(y, x);
+}
+
 void updateGrid(){
 	for (int h = 0; h < HEIGHT; h++){
 		for (int w = 0; w < WIDTH; w++){
-			// grid[h][w] = ((h*w) % 26) + 97;
+			double theta = whTheta(w, h);
+			double radius = r(theta);
+			grid[h][w] = theta;
 		}
 	}
 	fflush(stdout);

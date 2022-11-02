@@ -1,9 +1,20 @@
 #ifndef VOID_HEADER
 #define VOID_HEADER
 
-#define WIDTH 101
-#define HEIGHT 101
+#include <stdio.h>
+#include <unistd.h>
+
+#define WIDTH (101)
+#define HEIGHT (101)
+#define SLEEP_DURATION (1)
 
 char grid[HEIGHT][WIDTH];
+void printGrid(){
+	for (int y = 0; y < HEIGHT; y++){
+		for (int x = 0; x < WIDTH; x++)
+			printf("%c", grid[y][x]);
+		printf("\n");
+	}
+}
 
 #endif

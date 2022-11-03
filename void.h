@@ -7,18 +7,18 @@
 #include <unistd.h>
 #include <limits.h>
 
+typedef long double longle;
+
 #define PI (3.14159265359)
 #define PIPI (PI*2)
 #define RADIUS_TOL (0.8)
 #define THETA_TOL (1)
 #define SLEEP_DURATION (1)
 
-#define WIDTH (51)
-#define HEIGHT (51)
+#define WIDTH (101)
+#define HEIGHT (101)
 char grid[HEIGHT][WIDTH];
 
-double offset = 0;
-
-typedef long double longle;
+longle offset = 0;
 
 #endif

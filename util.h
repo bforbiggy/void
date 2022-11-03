@@ -6,6 +6,6 @@
 
 int wTOx(int w, int wmax);
 int hTOx(int h, int hmax);
-bool inRange(double number, double low, double high);
+bool inRange(long double number, long double low, long double high);
 
 #endif

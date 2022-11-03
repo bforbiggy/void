@@ -18,7 +18,7 @@ longle expectedTheta(longle theta, longle radius){
 }
 
 // Returns true if position is on spiral
-bool onSpiral(longle x, longle y){
+bool onSpiral(int x, int y){
 	// Calculate true angle/radius
 	longle theta = atan2(y, x);
 	if(theta < 0) theta += PIPI;
@@ -26,7 +26,7 @@ bool onSpiral(longle x, longle y){
 
 	// Calculate expected radius
 	longle calc_theta = expectedTheta(theta, radius);
-	longle calc_radius = r(calc_theta);
+	longle calc_radius = r(calc_theta) - offset;
 
 	return inRange(radius, calc_radius-RADIUS_TOL, calc_radius+RADIUS_TOL);
 }
@@ -59,8 +59,8 @@ int main(){
 		updateGrid();
 		printGrid();
 		offset += 0.15 * PI;
-		if(offset > PIPI)
-			offset -= PIPI;
+		if(offset > PI)
+			offset -= PI;
 		sleep(SLEEP_DURATION);
 	}
 	return 0;

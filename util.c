@@ -21,6 +21,6 @@ int hTOx(int h, int hmax) {
 /// @param low  the lower limit of number
 /// @param high the upper limit of number
 /// @return whether or not the number is within range
-bool inRange(double number, double low, double high){
+bool inRange(long double number, long double low, long double high){
 	return number >= low && number <= high;
 }

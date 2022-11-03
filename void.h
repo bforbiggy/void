@@ -5,6 +5,7 @@
 #include <math.h>
 #include <stdbool.h>
 #include <unistd.h>
+#include <limits.h>
 
 #define PI (3.14159265359)
 #define PIPI (PI*2)

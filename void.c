@@ -5,17 +5,30 @@ double r(double theta){
 	return theta;
 }
 
+// Return "expected" theta count
+// TODO: Needs significant optimization
+double expectedTheta(double theta, double radius){
+	double expected = theta;
+	for (int i = 0; i >= 0; i++){
+		if(r(expected + PI) > radius)
+			return expected;
+		expected += PI;
+	}
+	return INT_MAX;
+}
+
 // Returns true if position is on spiral
 bool onSpiral(double x, double y){
 	// Calculate true angle/radius
 	double theta = atan2(y, x);
 	double radius = sqrt(x*x + y*y);
+	if(theta < 0) theta += PIPI;
 
 	// Calculate expected radius
-	if(theta < 0) theta += PIPI;
-	double calc_r = r(theta);
+	double calc_theta = expectedTheta(theta, radius);
+	double calc_radius = r(calc_theta);
 
-	return inRange(fmod(radius, r(PIPI)), calc_r-TOLERANCE, calc_r+TOLERANCE);
+	return inRange(radius, calc_radius-TOLERANCE, calc_radius+TOLERANCE);
 }
 
 // Updates grid with new values

@@ -1,14 +1,26 @@
 #include "util.h"
 
+/// @brief Converts a x coordinate into the corresponding grid index
+/// @param x X position of point
+/// @param wmax Maximum width of grid
+/// @return Converted x coordinate
 int xToW(int x, int wmax){
 	return x + wmax/2 + 1;
 }
 
+/// @brief Converts a y coordinate into the corresponding grid index
+/// @param y Y position of point
+/// @param hmax Maximum height of grid
+/// @return Converted y coordinate
 int yToH(int y, int hmax){
 	return -y + hmax/2 + 1;
 }
 
-int max(int a, int b){
+/// @brief Returns the maximum of two numbers
+/// @param a 
+/// @param b 
+/// @return 
+longle max(longle a, longle b){
 	return a >= b ? a : b;
 }
 

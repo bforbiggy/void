@@ -10,7 +10,7 @@
 #define PI (3.14159265359)
 #define PIPI (PI*2)
 #define SAMPLE_RATE (0.05)
-#define SLEEP_DURATION (1)
+#define SLEEP_DURATION (111)
 
 #define WIDTH (51)
 #define HEIGHT (51)

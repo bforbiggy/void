@@ -52,7 +52,7 @@ int main(){
 		clearGrid();
 		updateGrid();
 		printGrid();
-		offset += 0.25 * PI;
+		offset += OFFSET_INC;
 		usleep(SLEEP_DURATION * 1000);
 	}
 	return 0;

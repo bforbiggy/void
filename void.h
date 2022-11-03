@@ -7,15 +7,15 @@
 #include <unistd.h>
 #include <limits.h>
 
-#define PI (3.14159265359)
-#define PIPI (PI*2)
 #define SAMPLE_RATE (0.05)
 #define SLEEP_DURATION (111)
+
+// Used for rotation
+#define OFFSET_INC (0.8)
+longle offset = 0;
 
 #define WIDTH (51)
 #define HEIGHT (51)
 char grid[HEIGHT][WIDTH];
-
-longle offset = 0;
 
 #endif

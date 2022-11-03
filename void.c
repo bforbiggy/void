@@ -21,12 +21,12 @@ longle expectedTheta(longle theta, longle radius){
 bool onSpiral(longle x, longle y){
 	// Calculate true angle/radius
 	longle theta = atan2(y, x);
-	longle radius = sqrt(x*x + y*y);
 	if(theta < 0) theta += PIPI;
+	longle radius = sqrt(x*x + y*y);
 
 	// Calculate expected radius
 	longle calc_theta = expectedTheta(theta, radius);
-	longle calc_radius = r(calc_theta - offset);
+	longle calc_radius = r(calc_theta);
 
 	return inRange(radius, calc_radius-RADIUS_TOL, calc_radius+RADIUS_TOL);
 }

@@ -9,7 +9,8 @@
 
 #define PI (3.14159265359)
 #define PIPI (PI*2)
-#define TOLERANCE (0.8)
+#define RADIUS_TOL (0.8)
+#define THETA_TOL (1)
 #define SLEEP_DURATION (1)
 
 #define WIDTH (51)
@@ -17,5 +18,7 @@
 char grid[HEIGHT][WIDTH];
 
 double offset = 0;
+
+typedef long double longle;
 
 #endif

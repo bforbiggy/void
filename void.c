@@ -1,14 +1,14 @@
 #include "void.h"
 
 // Spiral function
-double r(double theta){
+longle r(longle theta){
 	return theta;
 }
 
 // Return "expected" theta count
 // TODO: Needs significant optimization
-double expectedTheta(double theta, double radius){
-	double expected = theta;
+longle expectedTheta(longle theta, longle radius){
+	longle expected = theta;
 	for (int i = 0; i >= 0; i++){
 		if(r(expected + PI) > radius)
 			return expected;
@@ -18,17 +18,17 @@ double expectedTheta(double theta, double radius){
 }
 
 // Returns true if position is on spiral
-bool onSpiral(double x, double y){
+bool onSpiral(longle x, longle y){
 	// Calculate true angle/radius
-	double theta = atan2(y, x);
-	double radius = sqrt(x*x + y*y);
+	longle theta = atan2(y, x);
+	longle radius = sqrt(x*x + y*y);
 	if(theta < 0) theta += PIPI;
 
 	// Calculate expected radius
-	double calc_theta = expectedTheta(theta, radius);
-	double calc_radius = r(calc_theta);
+	longle calc_theta = expectedTheta(theta, radius);
+	longle calc_radius = r(calc_theta - offset);
 
-	return inRange(radius, calc_radius-TOLERANCE, calc_radius+TOLERANCE);
+	return inRange(radius, calc_radius-RADIUS_TOL, calc_radius+RADIUS_TOL);
 }
 
 // Updates grid with new values
@@ -36,8 +36,8 @@ void updateGrid(){
 	for (int h = 0; h < HEIGHT; h++){
 		for (int w = 0; w < WIDTH; w++){
 			// If point is on spiral, mark it
-			double x = wTOx(w, WIDTH);
-			double y = hTOx(h, HEIGHT);
+			int x = wTOx(w, WIDTH);
+			int y = hTOx(h, HEIGHT);
 			grid[h][w] = onSpiral(x, y) ? 'X' : ' ';
 		}
 	}

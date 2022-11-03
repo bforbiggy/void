@@ -4,11 +4,10 @@
 #include "util.h"
 #include "xbgi/graphics.h"
 #include <math.h>
-#include <unistd.h>
 #include <limits.h>
 
-#define SAMPLE_RATE (0.02)
-#define SLEEP_DURATION (200)
+#define SAMPLE_RATE (0.05)
+#define SLEEP_DURATION (100)
 
 // Used for rotation
 #define OFFSET_INC (0.8)

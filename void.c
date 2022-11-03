@@ -29,6 +29,8 @@ void updateGrid(){
 }
 
 int main(){
+	int gd = DETECT;
+	int gm;
   initwindow(WIDTH, HEIGHT);
 	while(true){
 		cleardevice();

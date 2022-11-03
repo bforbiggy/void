@@ -1,6 +1,6 @@
 #include "void.h"
 
-// Spiral functions
+// Spiral function
 double r(double theta){
 	return theta;
 }
@@ -9,13 +9,13 @@ double r(double theta){
 bool onSpiral(double x, double y){
 	// Calculate true angle/radius
 	double theta = atan2(y, x);
-	double radius = fmod(sqrt(x*x + y*y), r(2*PI));
+	double radius = sqrt(x*x + y*y);
 
 	// Calculate expected radius
-	if(theta < 0) theta += 2 * PI;
+	if(theta < 0) theta += PIPI;
 	double calc_r = r(theta);
 
-	return inRange(radius, calc_r-TOLERANCE, calc_r+TOLERANCE);
+	return inRange(fmod(radius, r(PIPI)), calc_r-TOLERANCE, calc_r+TOLERANCE);
 }
 
 // Updates grid with new values
@@ -45,6 +45,9 @@ int main(){
 	while(true){
 		updateGrid();
 		printGrid();
+		offset += 0.15 * PI;
+		if(offset > PIPI)
+			offset -= PIPI;
 		sleep(SLEEP_DURATION);
 	}
 	return 0;

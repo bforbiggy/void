@@ -5,6 +5,15 @@ longle r(longle theta){
 	return theta;
 }
 
+// Clears grid
+void clearGrid(){
+	for (int h = 0; h < HEIGHT; h++){
+		for (int w = 0; w < WIDTH; w++){
+			grid[h][w] = ' ';
+		}
+	}
+}
+
 // Updates grid with sampled values
 void updateGrid(){
 	longle longest = max(WIDTH, HEIGHT);
@@ -20,7 +29,7 @@ void updateGrid(){
 		int w = xToW(x, WIDTH);
 		int h = yToH(y, HEIGHT);
 		if(h >= HEIGHT || w >= WIDTH) return;
-		circle(h, w, 1);
+		grid[h][w] = 'X';
 
 		// Iterate to next point
 		theta += SAMPLE_RATE;
@@ -28,13 +37,21 @@ void updateGrid(){
 	}
 }
 
+// Prints grid
+void printGrid(){
+	for (int h = 0; h < HEIGHT; h++){
+		for (int w = 0; w < WIDTH; w++)
+			printf("%c", grid[h][w]);
+		printf("\n");
+	}
+	fflush(stdout);
+}
+
 int main(){
-	int gd = DETECT;
-	int gm;
-  initwindow(WIDTH, HEIGHT);
 	while(true){
-		cleardevice();
+		clearGrid();
 		updateGrid();
+		printGrid();
 		offset += OFFSET_INC;
 		usleep(SLEEP_DURATION * 1000);
 	}

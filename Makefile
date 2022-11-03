@@ -1,8 +1,8 @@
 default:
-	gcc void.c util.c xbgi/libXbgi.a -o void -Wall -Wextra -lm -lX11 -lm
+	gcc void.c util.c -o void -Wall -Wextra -lm
 
 run: default
 	./void
 
 clean:
-	rm void xbgi/*.o
+	rm void

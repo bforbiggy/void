@@ -7,12 +7,8 @@
 #include <unistd.h>
 #include <limits.h>
 
-typedef long double longle;
-
 #define PI (3.14159265359)
 #define PIPI (PI*2)
-#define RADIUS_TOL (0.8)
-#define THETA_TOL (1)
 #define SLEEP_DURATION (1)
 
 #define WIDTH (101)
@@ -20,5 +16,6 @@ typedef long double longle;
 char grid[HEIGHT][WIDTH];
 
 longle offset = 0;
+longle TOLERANCE = 0.15*PI;
 
 #endif

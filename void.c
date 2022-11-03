@@ -26,9 +26,9 @@ bool onSpiral(int x, int y){
 
 	// Calculate expected radius
 	longle calc_theta = expectedTheta(theta, radius);
-	longle calc_radius = r(calc_theta) - offset;
+	longle calc_radius = r(calc_theta);
 
-	return inRange(radius, calc_radius-RADIUS_TOL, calc_radius+RADIUS_TOL);
+	return inRange(radius, calc_radius-TOLERANCE, calc_radius+TOLERANCE);
 }
 
 // Updates grid with new values
@@ -59,8 +59,6 @@ int main(){
 		updateGrid();
 		printGrid();
 		offset += 0.15 * PI;
-		if(offset > PI)
-			offset -= PI;
 		sleep(SLEEP_DURATION);
 	}
 	return 0;

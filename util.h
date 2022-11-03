@@ -6,9 +6,9 @@
 
 typedef long double longle;
 
-
-int wTOx(int w, int wmax);
-int hTOx(int h, int hmax);
+int max(int a, int b);
+int xToW(int x, int wmax);
+int yToH(int y, int hmax);
 bool inRange(longle number, longle low, longle high);
 
 #endif

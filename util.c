@@ -1,19 +1,15 @@
 #include "util.h"
 
-/// @brief Given a horizontal index of a known width grid, calculate the corresponding x value.
-/// @param w Horizontal position
-/// @param wmax Maximum width of grid
-/// @return The origin relative x value
-int wTOx(int w, int wmax) {
-	return w - wmax/2;
+int xToW(int x, int wmax){
+	return x + wmax/2 + 1;
 }
 
-/// @brief Given a vertical index of a known height grid, calculate the corresponding y value.
-/// @param h Vertical position
-/// @param hmax Maximum height of grid
-/// @return The origin relative y value
-int hTOx(int h, int hmax) {
-	return -h + hmax/2;
+int yToH(int y, int hmax){
+	return -y + hmax/2 + 1;
+}
+
+int max(int a, int b){
+	return a >= b ? a : b;
 }
 
 /// @brief Calculate if a number is within range

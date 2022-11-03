@@ -5,50 +5,43 @@ longle r(longle theta){
 	return theta;
 }
 
-// Return "expected" theta count
-// TODO: Needs significant optimization
-longle expectedTheta(longle theta, longle radius){
-	longle expected = theta;
-	for (int i = 0; i >= 0; i++){
-		if(r(expected + PI) > radius)
-			return expected;
-		expected += PI;
-	}
-	return INT_MAX;
-}
-
-// Returns true if position is on spiral
-bool onSpiral(int x, int y){
-	// Calculate true angle/radius
-	longle theta = atan2(y, x);
-	if(theta < 0) theta += PIPI;
-	longle radius = sqrt(x*x + y*y);
-
-	// Calculate expected radius
-	longle calc_theta = expectedTheta(theta, radius);
-	longle calc_radius = r(calc_theta);
-
-	return inRange(radius, calc_radius-TOLERANCE, calc_radius+TOLERANCE);
-}
-
-// Updates grid with new values
-void updateGrid(){
+// Clears grid
+void clearGrid(){
 	for (int h = 0; h < HEIGHT; h++){
 		for (int w = 0; w < WIDTH; w++){
-			// If point is on spiral, mark it
-			int x = wTOx(w, WIDTH);
-			int y = hTOx(h, HEIGHT);
-			grid[h][w] = onSpiral(x, y) ? 'X' : ' ';
+			grid[h][w] = ' ';
 		}
 	}
-	fflush(stdout);
+}
+
+// Updates grid with new sampled values
+void updateGrid(){
+	int longest = max(WIDTH, HEIGHT);
+
+	longle theta = 0;
+	longle radius = r(theta);
+	while (radius <= longest){
+		// Convert to cartesian
+		int x = radius * cos(theta);
+		int y = radius * sin(theta);
+
+		// Convert to index then modify grid
+		int w = xToW(x, WIDTH);
+		int h = yToH(y, HEIGHT);
+		if(h >= HEIGHT || w >= WIDTH) return;
+		grid[h][w] = 'X';
+
+		// Iterate to next set
+		theta += SAMPLE_RATE;
+		radius = r(theta);
+	}
 }
 
 // Prints grid
 void printGrid(){
-	for (int y = 0; y < HEIGHT; y++){
-		for (int x = 0; x < WIDTH; x++)
-			printf("%c", grid[y][x]);
+	for (int h = 0; h < HEIGHT; h++){
+		for (int w = 0; w < WIDTH; w++)
+			printf("%c", grid[h][w]);
 		printf("\n");
 	}
 	fflush(stdout);
@@ -56,6 +49,7 @@ void printGrid(){
 
 int main(){
 	while(true){
+		clearGrid();
 		updateGrid();
 		printGrid();
 		offset += 0.15 * PI;

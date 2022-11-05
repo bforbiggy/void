@@ -20,7 +20,7 @@ void updateGrid(){
 		int w = xToW(x, WIDTH);
 		int h = yToH(y, HEIGHT);
 		if(h >= HEIGHT || w >= WIDTH) return;
-		circle(h, w, 1);
+		putpixel(w, h, WHITE);
 
 		// Iterate to next point
 		longle multiplier = radius/5.0;

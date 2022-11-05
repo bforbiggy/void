@@ -23,7 +23,9 @@ void updateGrid(){
 		circle(h, w, 1);
 
 		// Iterate to next point
-		theta += SAMPLE_RATE;
+		longle multiplier = radius/5.0;
+		multiplier = multiplier > 1 ? multiplier : 1;
+		theta += SAMPLE_RATE / multiplier;
 		radius = r(theta) - offset;
 	}
 }

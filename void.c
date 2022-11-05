@@ -16,14 +16,15 @@ void clearGrid(){
 
 // Updates grid with sampled values
 void updateGrid(){
+	clearGrid();
 	longle longest = max(WIDTH, HEIGHT);
 
 	longle theta = offset;
 	longle radius = r(theta) - offset;
 	while (radius <= longest){
 		// Convert to cartesian
-		int x = radius * cos(theta);
-		int y = radius * sin(theta);
+		longle x = radius * cos(theta);
+		longle y = radius * sin(theta);
 
 		// Convert to index then modify grid
 		int w = xToW(x, WIDTH);
@@ -31,8 +32,10 @@ void updateGrid(){
 		if(h >= HEIGHT || w >= WIDTH) return;
 		grid[h][w] = 'X';
 
-		// Iterate to next point
-		theta += SAMPLE_RATE;
+		// Iterate to next sampled point
+		longle multiplier = radius/5.0;
+		multiplier = multiplier > 1 ? multiplier : 1;
+		theta += SAMPLE_RATE / multiplier;
 		radius = r(theta) - offset;
 	}
 }
@@ -49,9 +52,9 @@ void printGrid(){
 
 int main(){
 	while(true){
-		clearGrid();
 		updateGrid();
 		printGrid();
+
 		offset += OFFSET_INC;
 		usleep(SLEEP_DURATION * 1000);
 	}

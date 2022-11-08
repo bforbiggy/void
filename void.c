@@ -15,9 +15,8 @@ void clearGrid() {
 }
 
 // Updates grid with sampled values
-void updateGrid() {
+void updateGrid(longle longest) {
 	clearGrid();
-	longle longest = max(WIDTH, HEIGHT);
 
 	longle theta = offset;
 	longle radius = r(theta) - offset;
@@ -29,9 +28,8 @@ void updateGrid() {
 		// Convert to index then modify grid
 		int w = xToW(x, WIDTH);
 		int h = yToH(y, HEIGHT);
-		if (h >= HEIGHT || w >= WIDTH)
-			return;
-		grid[h][w] = 'X';
+		if (h > 0 && w > 0 && h < HEIGHT && w < WIDTH)
+			grid[h][w] = 'X';
 
 		// Iterate to next sampled point
 		longle multiplier = radius / 5.0;
@@ -52,10 +50,11 @@ void printGrid() {
 }
 
 int main() {
+	longle longest = sqrt(WIDTH * WIDTH * 0.25 + HEIGHT * HEIGHT * 0.25);
 	while (true) {
 		printf("\x1b[H");
 		fflush(stdout);
-		updateGrid();
+		updateGrid(longest);
 		printGrid();
 
 		offset += OFFSET_INC;

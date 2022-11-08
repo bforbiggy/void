@@ -1,8 +1,10 @@
 #ifndef UTIL_HEADER
 #define UTIL_HEADER
 
-#include <stdio.h>
 #include <stdbool.h>
+#include <stdio.h>
+
+#define Y_STRETCH (1 / 1.5)
 
 typedef long double longle;
 

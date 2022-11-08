@@ -58,7 +58,11 @@ int main() {
 		printGrid();
 
 		offset += OFFSET_INC;
+#if __unix__
 		usleep(SLEEP_DURATION * 1000);
+#elif _WIN64
+		sleep(SLEEP_DURATION);
+#endif
 	}
 	return 0;
 }

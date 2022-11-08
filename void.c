@@ -50,6 +50,7 @@ void printGrid() {
 }
 
 int main() {
+	setvbuf(stdout, NULL, _IOFBF, 0);
 	longle longest = sqrt(WIDTH * WIDTH * 0.25 + HEIGHT * HEIGHT * 0.25);
 	while (true) {
 		printf("\x1b[H");

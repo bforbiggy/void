@@ -5,7 +5,7 @@
 /// @param wmax Maximum width of grid
 /// @return Converted x coordinate
 int xToW(longle x, int wmax) {
-	return (int)(x + wmax / 2 + 1);
+	return round(x + wmax / 2 + 1);
 }
 
 /// @brief Converts a y coordinate into the corresponding grid index
@@ -13,7 +13,7 @@ int xToW(longle x, int wmax) {
 /// @param hmax Maximum height of grid
 /// @return Converted y coordinate
 int yToH(longle y, int hmax) {
-	return (int)(-y * Y_STRETCH + hmax / 2 + 1);
+	return round(-y * Y_STRETCH + hmax / 2 + 1);
 }
 
 /// @brief Returns the maximum of two numbers

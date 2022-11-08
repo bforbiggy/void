@@ -9,7 +9,7 @@ longle r(longle theta) {
 void clearGrid() {
 	for (int h = 0; h < HEIGHT; h++) {
 		for (int w = 0; w < WIDTH; w++) {
-			grid[h][w] = ' ';
+			grid[h][w] = BLANK;
 		}
 	}
 }
@@ -29,7 +29,7 @@ void updateGrid(longle longest) {
 		int w = xToW(x, WIDTH);
 		int h = yToH(y, HEIGHT);
 		if (h > 0 && w > 0 && h < HEIGHT && w < WIDTH)
-			grid[h][w] = 'X';
+			grid[h][w] = MARK;
 
 		// Iterate to next sampled point
 		longle multiplier = radius / 5.0;

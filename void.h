@@ -14,6 +14,8 @@
 #define OFFSET_INC (0.8)
 longle offset = 0;
 
+#define MARK ('o')
+#define BLANK (' ')
 #define WIDTH (101)
 #define HEIGHT (51)
 char grid[HEIGHT][WIDTH];
